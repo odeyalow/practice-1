@@ -1,4 +1,6 @@
-const App:React.FC = () => {
+import routes from "./routes";
+
+const App = () => {
     return (
         <>
         </>
