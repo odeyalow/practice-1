@@ -1,19 +1,21 @@
-import IRoute from "src/entities/IRoutes";
-import Cart from "src/pages/cart";
-import Categories from "src/pages/categories";
-import Home from "src/pages/home";
-import Wishlist from "src/pages/wishlist";
-import SingleCategegory from "src/shared/components/SingleCategory";
-import SingleProduct from "src/shared/components/SingleProduct";
+import IRoute from "@/entities/IRoutes";
+import Cart from "@/pages/cart";
+import Categories from "@/pages/categories";
+import Home from "@/pages/cart";
+import Wishlist from "@/pages/cart";
+import SingleCategegory from "@/shared/components/singleCategory";
+import SingleProduct from "@/shared/components/singleProduct";
+import Page404 from "@/pages/page404";
 
 
 const routes:IRoute[] = [
     { path: '/', index: true, name: 'Home', element: <Home /> },
     { path: '/categories', name: 'Categories', element: <Categories /> },
-    { path: '/categories/:name', name: 'Categories', element: <SingleCategegory /> },
+    { path: '/categories/:name', isNotPage: true, name: 'Single Categorie', element: <SingleCategegory /> },
     { path: '/cart', name: 'Cart', element: <Cart /> },
     { path: '/wishlist', name: 'Wishlist', element: <Wishlist /> },
-    { path: '/:name', isNotPage: true,  name: 'Home', element: <SingleProduct /> },
+    { path: '/products/:name', isNotPage: true,  name: 'Single Product', element: <SingleProduct /> },
+    { path: '*', isNotPage: true,  name: 'Page404', element: <Page404 /> },
 ];
 
 export default routes;

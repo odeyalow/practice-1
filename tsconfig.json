@@ -7,6 +7,10 @@
     "skipLibCheck": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["./src/shared/components/*"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",
