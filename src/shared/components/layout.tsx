@@ -1,16 +1,14 @@
 import { Outlet } from "react-router";
 
 import Header from "./header";
-import Footer from "./footer";
 
 const Layout = () => {
     return (
-        <main>
+        <main className="d-flex flex-column ">
             <Header />
-            <div className="main__content">
-                <Outlet />
-            </div>
-            <Footer />
+                <div className="main__content">
+                    <Outlet />
+                </div>
         </main>
     );
 }
