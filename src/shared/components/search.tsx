@@ -1,19 +1,24 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const Search = () => {
     return (
-        <InputGroup className="mb-3">
-          <Form.Control
-            placeholder="Recipient's username"
-            aria-label="Recipient's username"
-            aria-describedby="basic-addon2"
-          />
-          <Button variant="outline-secondary" id="button-addon2">
-            Button
-          </Button>
-        </InputGroup>
+        <Form>
+        <Row>
+          <Col xs="auto">
+            <Form.Control
+              type="text"
+              placeholder="Search"
+              className="mr-sm-2 w-300"
+            />
+          </Col>
+          <Col xs="auto">
+            <Button type="submit">Submit</Button>
+          </Col>
+        </Row>
+      </Form>
     );
 }
  
