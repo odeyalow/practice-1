@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 
 import CarouselItem from '@/shared/components/carouselItem';
 import RandomProduct from '@/shared/components/randomProduct';
-import ProductsGrid from '@/shared/components/productsGrid';
+import ProductsCollection from '@/shared/components/productsCollection';
 import PagePagination from '@/shared/components/pagePagination';
 
 const Home = () => {
@@ -43,7 +43,7 @@ const Home = () => {
                 </Col>
             </Row>
             <Row gap={1}>
-                <ProductsGrid />
+                <ProductsCollection placement='grid'/>
             </Row>
             <PagePagination />
         </Container>
