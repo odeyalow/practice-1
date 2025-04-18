@@ -1,6 +1,12 @@
+import ContentWrapper from '@/shared/components/contentWrapper';
+
 const Cart = () => {
     return (
-        <h1>Cart</h1>
+        <ContentWrapper
+        title='Сart'
+        description='Here are the items in your cart.'>
+            <h1></h1>
+        </ContentWrapper>
     );
 }
  
