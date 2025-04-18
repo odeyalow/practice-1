@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button'
 import CarouselItem from '@/shared/components/carouselItem';
 import RandomProduct from '@/shared/components/randomProduct';
 import ProductsGrid from '@/shared/components/productsGrid';
+import PagePagination from '@/shared/components/pagePagination';
 
 const Home = () => {
     return (
@@ -20,30 +21,31 @@ const Home = () => {
             </Row>
             <Row className='justify-content-center mb-2'>
                 <Col xs="auto">
-                    <Button variant='primary' size='lg' active>All</Button>
+                    <Button variant='secondary' size='lg' active>All</Button>
                 </Col>
                 <Col xs="auto">
-                    <Button variant='outline-primary' size='lg'>Category</Button>
+                    <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
                 <Col xs="auto">
-                    <Button variant='outline-primary' size='lg'>Category</Button>
+                    <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
                 <Col xs="auto">
-                    <Button variant='outline-primary' size='lg'>Category</Button>
+                    <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
                 <Col xs="auto">
-                    <Button variant='outline-primary' size='lg'>Category</Button>
+                    <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
                 <Col xs="auto">
-                    <Button variant='outline-primary' size='lg'>Category</Button>
+                    <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
                 <Col xs="auto">
-                    <Button variant='outline-primary' size='lg'>Category</Button>
+                    <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
             </Row>
             <Row gap={1}>
                 <ProductsGrid />
             </Row>
+            <PagePagination />
         </Container>
     );
 }

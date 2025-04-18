@@ -15,7 +15,7 @@ const Search = () => {
             />
           </Col>
           <Col xs="auto">
-            <Button type="submit">Submit</Button>
+            <Button variant='secondary' type="submit">Submit</Button>
           </Col>
         </Row>
       </Form>

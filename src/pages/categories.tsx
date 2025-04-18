@@ -1,6 +1,18 @@
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+
+import ContentWrapper from '@/shared/components/contentWrapper';
+
 const Categories = () => {
-    return (  
-        <h1>Categories</h1>
+    return (
+        <ContentWrapper title='Categories'>
+            <Col className='my-2' md="auto"><Button variant="outline-dark">Category</Button></Col>
+            <Col className='my-2' md="auto"><Button variant="outline-dark">Category</Button></Col>
+            <Col className='my-2' md="auto"><Button variant="outline-dark">Category</Button></Col>
+            <Col className='my-2' md="auto"><Button variant="outline-dark">Category</Button></Col>
+            <Col className='my-2' md="auto"><Button variant="outline-dark">Category</Button></Col>
+            <Col className='my-2' md="auto"><Button variant="outline-dark">Category</Button></Col>
+        </ContentWrapper>
     );
 }
  

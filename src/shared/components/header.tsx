@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Badge from 'react-bootstrap/Badge';
+import Button from 'react-bootstrap/Button';
 
 import Search from './search';
 import routes from '@/app/routes';
@@ -20,11 +22,15 @@ const Header = () => {
                             routes.map(({ path, name, isNotPage }: IRoute) => {
                                 if ( !isNotPage ) {
                                     return  <Nav.Link
+                                                className="d-flex gap-1"
                                                 as={Link}
                                                 to={path}
                                                 key={path}>
                                                 {name}
+                                                {name === 'Cart' && <Badge bg="primary" className='h-100'>3</Badge>}
+                                                {name === 'Wishlist' && <Badge bg="danger" className='h-100'>3</Badge>}
                                             </Nav.Link>
+                                    
                                 }
                             })
                         }
