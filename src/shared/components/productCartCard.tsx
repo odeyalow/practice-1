@@ -1,28 +1,34 @@
-import { Card, Row, Col, Button } from 'react-bootstrap';
+import { Card, Row, Col, Button, Form } from 'react-bootstrap';
 
+import BinIcon from '@/resources/icons/bin-icon';
 
 const ProductCartCard = () => {
     return (
-        <Card className="my-3">
-            <Row className="gap-4">
-                <Col md={1}>
+        <Card className="my-3" border='secondary'>
+            <Row className="gap-0">
+                <Col sm={2} className='my-auto d-flex'>
                     <Card.Img
                     src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png"
                     alt="Example"
-                    style={{ width: '8rem' }}
+                    style={{ width: '8rem', margin: '0 auto' }}
                     />
                 </Col>
-                <Col md={8}>
+                <Col>
                     <Card.Body>
-                    <Card.Title>Заголовок</Card.Title>
-                    <Card.Text>
-                        Это пример текста, находящегося сбоку от картинки. Можно разместить здесь описание, детали и прочее.
-                    </Card.Text>
-                    <Col sm={2} className='p-0'>
-                        <Button className='w-100 px-0 h-100 d-flex justify-content-center align-items-center' variant="danger">
-
-                        </Button>
-                    </Col>
+                        <Card.Title>Title</Card.Title>
+                        <Card.Text>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde quibusdam, nulla quas tenetur laboriosam necessitatibus error temporibus distinctio aspernatur ratione.
+                        </Card.Text>
+                        <Col className='d-flex align-items-center'>
+                            <Form.Check
+                                label="Add"
+                                name="radio"
+                                type="checkbox"
+                            />
+                            <Button className='px-1 h-100 d-flex justify-content-center align-items-center ms-auto' variant="danger">
+                                    <BinIcon size={20}/>
+                            </Button>
+                        </Col>
                     </Card.Body>
                 </Col>
             </Row>

@@ -18,12 +18,12 @@ const ProductCard = () => {
                         <Col sm={9} className='p-0'>
                             <Button className='w-100 h-100 d-flex justify-content-center align-items-center gap-1' variant="dark">
                                 Add to cart
-                                <CartIcon fill={false} size={20}/>
+                                <CartIcon size={20}/>
                             </Button>
                         </Col>
                         <Col sm={2} className='p-0'>
                             <Button className='w-100 px-0 h-100 d-flex justify-content-center align-items-center' variant="danger">
-                                <WishlistIcon fill={false} size={20}/>
+                                <WishlistIcon size={20}/>
                             </Button>
                         </Col>
                     </Row>

@@ -11,7 +11,7 @@ const ContentWrapper:React.FC<ContentWrapperProps> = ({ title, children, descrip
         <Container className='my-5'>
             <h1>{title}:</h1>
             {description && <p>{description}</p>}
-            <Container className='my-3'>
+            <Container className='my-3 p-0'>
                 <Row className="justify-content-md-center">
                     {children}
                 </Row>

@@ -4,11 +4,10 @@ const Search = () => {
     return (
         <Form>
         <Row>
-          <Col xs="auto">
+          <Col sm="auto">
             <Form.Control
               type="text"
               placeholder="Search"
-              className="mr-sm-2 w-300"
             />
           </Col>
           <Col xs="auto">

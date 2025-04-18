@@ -31,6 +31,9 @@ const ProductsCollection:React.FC<ProductsCollectionProps> = ({ placement }) => 
                 <ProductCartCard />
                 <ProductCartCard />
                 <ProductCartCard />
+                <ProductCartCard />
+                <ProductCartCard />
+                <ProductCartCard />
             </Stack>
         );
     }

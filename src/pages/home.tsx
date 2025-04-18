@@ -20,25 +20,25 @@ const Home = () => {
                 </Col>
             </Row>
             <Row className='justify-content-center mb-2'>
-                <Col xs="auto">
+                <Col className="my-2" xs="auto">
                     <Button variant='secondary' size='lg' active>All</Button>
                 </Col>
-                <Col xs="auto">
+                <Col className="my-2" xs="auto">
                     <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
-                <Col xs="auto">
+                <Col className="my-2" xs="auto">
                     <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
-                <Col xs="auto">
+                <Col className="my-2" xs="auto">
                     <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
-                <Col xs="auto">
+                <Col className="my-2" xs="auto">
                     <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
-                <Col xs="auto">
+                <Col className="my-2" xs="auto">
                     <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
-                <Col xs="auto">
+                <Col className="my-2" xs="auto">
                     <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
             </Row>

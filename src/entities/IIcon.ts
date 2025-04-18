@@ -1,5 +1,5 @@
 type IIcon = {
-    fill: boolean;
+    fill?: boolean;
     size: number;
 }
 
