@@ -20,29 +20,29 @@ const Home = () => {
                 </Col>
             </Row>
             <Row className='justify-content-center mb-2'>
-                <Col className="my-2" xs="auto">
+                <Col className="my-1 px-1" xs="auto">
                     <Button variant='secondary' size='lg' active>All</Button>
                 </Col>
-                <Col className="my-2" xs="auto">
+                <Col className="my-1 px-1" xs="auto">
                     <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
-                <Col className="my-2" xs="auto">
+                <Col className="my-1 px-1" xs="auto">
                     <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
-                <Col className="my-2" xs="auto">
+                <Col className="my-1 px-1" xs="auto">
                     <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
-                <Col className="my-2" xs="auto">
+                <Col className="my-1 px-1" xs="auto">
                     <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
-                <Col className="my-2" xs="auto">
+                <Col className="my-1 px-1" xs="auto">
                     <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
-                <Col className="my-2" xs="auto">
+                <Col className="my-1 px-1" xs="auto">
                     <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
             </Row>
-            <Row gap={1}>
+            <Row gap={1} className='mx-auto'>
                 <ProductsCollection placement='grid'/>
             </Row>
             <PagePagination />

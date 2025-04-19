@@ -1,4 +1,4 @@
-import { Container, Row, Col, Stack } from 'react-bootstrap';
+import { Container, Row, Stack } from 'react-bootstrap';
 
 import ProductCard from './productCard';
 import ProductCartCard from './productCartCard';
@@ -12,16 +12,16 @@ const ProductsCollection:React.FC<ProductsCollectionProps> = ({ placement }) => 
     if ( placement === 'grid' ) {
         return (
             <Container>
-                <Row md="auto">
-                    <Col><ProductCard /></Col>
-                    <Col><ProductCard /></Col>
-                    <Col><ProductCard /></Col>
-                    <Col><ProductCard /></Col>
-                    <Col><ProductCard /></Col>
-                    <Col><ProductCard /></Col>
-                    <Col><ProductCard /></Col>
-                    <Col><ProductCard /></Col>
-                    <Col><ProductCard /></Col>
+                <Row md="auto" className='mx-auto d-flex justify-content-center gap-4'>
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
                 </Row>
             </Container>
         );
