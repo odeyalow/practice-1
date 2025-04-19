@@ -1,11 +1,12 @@
 import { Button, Card, Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import CartIcon from '@/resources/icons/cart-icon';
 import WishlistIcon from '@/resources/icons/wishlist-icon';
 
 const ProductCard = () => {
     return (
-        <Card className='my-3' style={{ width: '15rem' }}>
+        <Card as={Link} to='/products/name' className='my-3' style={{ width: '15rem', textDecoration: 'none' }}>
             <Card.Img className='mx-auto' variant="top" style={{ width: '10rem' }} src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png" />
             <Card.Body>
                 <Card.Title>Card Title</Card.Title>

@@ -1,11 +1,12 @@
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import CartIcon from '@/resources/icons/cart-icon';
 import WishlistIcon from '@/resources/icons/wishlist-icon';
 
 const RandomProduct = () => {
     return (
-        <Card style={{ width: '20rem' }} className='w-100 h-100'>
+        <Card as={Link} to='/products/name' style={{ width: '20rem', textDecoration: 'none' }} className='w-100 h-100'>
             <Card.Img variant="top" src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png"
             style={{ objectFit: 'cover' }}/>
             <Card.Body className="d-flex flex-column">

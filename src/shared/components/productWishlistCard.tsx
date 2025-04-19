@@ -1,10 +1,11 @@
 import { Card, Row, Col, Button, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import BinIcon from '@/resources/icons/bin-icon';
 
 const ProductCartCard = () => {
     return (
-        <Card className="my-3" border='secondary'>
+        <Card as={Link} to='/products/name' className="my-3" border='secondary' style={{ textDecoration: 'none' }}>
             <Row className="gap-0">
                 <Col sm={2} className='my-auto d-flex'>
                     <Card.Img
