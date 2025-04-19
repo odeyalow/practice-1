@@ -42,7 +42,7 @@ const Home = () => {
                     <Button variant='outline-secondary' size='lg'>Category</Button>
                 </Col>
             </Row>
-            <Row gap={1} className='mx-auto'>
+            <Row className='d-flex justify-content-center'>
                 <ProductsCollection placement='grid'/>
             </Row>
             <PagePagination />

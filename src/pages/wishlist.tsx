@@ -1,6 +1,11 @@
+import ContentWrapper from "@/shared/components/contentWrapper";
+import ProductsCollection from "@/shared/components/productsCollection";
+
 const Wishlist = () => {
     return (
-        <h1>Wishlist</h1>
+        <ContentWrapper title="Wishlist">
+            <ProductsCollection placement='grid'/>
+        </ContentWrapper>
     );
 }
  

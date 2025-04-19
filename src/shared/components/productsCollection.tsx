@@ -1,7 +1,7 @@
-import { Container, Row, Stack } from 'react-bootstrap';
+import { Container, Row, Col, Stack } from 'react-bootstrap';
 
 import ProductCard from './productCard';
-import ProductCartCard from './productCartCard';
+import ProductCartCard from './productWishlistCard';
 
 interface ProductsCollectionProps {
     placement: string;
@@ -12,16 +12,16 @@ const ProductsCollection:React.FC<ProductsCollectionProps> = ({ placement }) => 
     if ( placement === 'grid' ) {
         return (
             <Container>
-                <Row md="auto" className='mx-auto d-flex justify-content-center gap-4'>
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
+                <Row md="auto" className='d-flex justify-content-center'>
+                    <Col><ProductCard /></Col>
+                    <Col><ProductCard /></Col>
+                    <Col><ProductCard /></Col>
+                    <Col><ProductCard /></Col>
+                    <Col><ProductCard /></Col>
+                    <Col><ProductCard /></Col>
+                    <Col><ProductCard /></Col>
+                    <Col><ProductCard /></Col>
+                    <Col><ProductCard /></Col>
                 </Row>
             </Container>
         );
