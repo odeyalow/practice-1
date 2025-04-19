@@ -1,7 +1,7 @@
 import { Container, Row, Col, Stack } from 'react-bootstrap';
 
 import ProductCard from './productCard';
-import ProductCartCard from './productWishlistCard';
+import ProductCartCard from './productCartCard';
 
 interface ProductsCollectionProps {
     placement: string;
