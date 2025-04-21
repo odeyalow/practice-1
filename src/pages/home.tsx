@@ -13,7 +13,7 @@ const Home = () => {
         <Container>
             <Row className='my-5 align-items-stretch'>
                 <Col sm={4} className='d-flex'>
-                    <RandomProduct />
+                    <RandomProduct fullSize/>
                 </Col>
                 <Col sm={8} className="d-flex">
                     <CarouselItem />
