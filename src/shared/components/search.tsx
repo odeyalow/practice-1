@@ -1,20 +1,25 @@
-import { Button, Form, Row, Col } from 'react-bootstrap';
+import { Button, Form, Row, Col, Container } from 'react-bootstrap';
+
+// import SearchResults from './searchResults';
 
 const Search = () => {
     return (
-        <Form>
-        <Row>
-          <Col sm="auto">
-            <Form.Control
-              type="text"
-              placeholder="Search"
-            />
-          </Col>
-          <Col xs="auto">
-            <Button variant='secondary' type="submit">Submit</Button>
-          </Col>
-        </Row>
-      </Form>
+       <Container>
+         <Form>
+          <Row>
+            <Col style={{ position: 'relative' }}>
+              <Form.Control
+                type="text"
+                placeholder="Search"
+              />
+              {/* <SearchResults /> */}
+            </Col>
+            <Col xs="auto">
+              <Button variant='outline-secondary' type="submit">Submit</Button>
+            </Col>
+          </Row>
+        </Form>
+       </Container>
     );
 }
  

@@ -7,7 +7,7 @@ import IRoute from '@/entities/IRoutes';
 
 const Header = () => {
     return (
-        <Navbar data-bs-theme="light" expand="sm" className="bg-body-tertiary">
+        <Navbar data-bs-theme="light" expand="lg" className="bg-body-tertiary">
             <Container>
                 <Navbar.Brand as={Link} to="/">TECHNO.com</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
