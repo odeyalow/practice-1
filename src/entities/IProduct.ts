@@ -1,4 +1,11 @@
-interface IProduct {
+export interface IProductResponse {
+    limit: number;
+    skip: number;
+    total: number;
+    products: IProduct[];
+}
+
+export interface IProduct {
     id: number;
     title: string;
     description: string;
@@ -11,8 +18,6 @@ interface IProduct {
     thumbnail: string
 }
 
-type IProductImg = {
+interface IProductImg {
     img: string;
 }
-
-export default IProduct;

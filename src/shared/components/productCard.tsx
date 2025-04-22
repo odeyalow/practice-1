@@ -3,17 +3,20 @@ import { Link } from 'react-router-dom';
 
 import CartIcon from '@/resources/icons/cart-icon';
 import WishlistIcon from '@/resources/icons/wishlist-icon';
+import { IProduct } from '@/entities/IProduct';
 
-const ProductCard = () => {
+interface ProductCardProps {
+    product: IProduct;
+}
+
+const ProductCard:React.FC<ProductCardProps> = ({ product }) => {
+    console.log(product.thumbnail)
+    const formattedProductName = product.title.toLowerCase().replace(/\s+/g, '-');
     return (
-        <Card as={Link} to='/products/name' className='my-3' style={{ width: '15rem', textDecoration: 'none' }}>
-            <Card.Img className='mx-auto' variant="top" style={{ width: '10rem' }} src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png" />
-            <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content.
-                </Card.Text>
+        <Card as={Link} to={`/products/${formattedProductName}`} className='my-3' style={{ width: '15rem', height: '90%', textDecoration: 'none' }}>
+            <Card.Img className='mx-auto mt-3' variant="top" style={{ width: '10rem' }} src={product.thumbnail} />
+            <Card.Body className='d-flex justify-content-end' style={{ flexDirection: 'column' }}>
+                <Card.Title>{product.title}</Card.Title>
                 <Container>
                     <Row className='d-flex justify-content-between'>
                         <Col sm={9} className='p-0'>
