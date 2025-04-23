@@ -4,9 +4,8 @@ import Col from 'react-bootstrap/Col';
 
 import CarouselItem from '@/shared/components/carouselItem';
 import RandomProduct from '@/shared/components/randomProduct';
-import ProductsCollection from '@/shared/components/productsCollection';
-import PagePagination from '@/shared/components/pagePagination';
 import CategoriesList from '@/shared/components/categoriesList';
+import ProductsSection from '@/shared/components/productsSection';
 
 const Home = () => {
     return (
@@ -21,9 +20,8 @@ const Home = () => {
             </Row>
             <CategoriesList />
             <Row className='d-flex justify-content-center'>
-                <ProductsCollection placement='grid'/>
+                <ProductsSection productsPlacement='grid'/>
             </Row>
-            <PagePagination />
         </Container>
     );
 }

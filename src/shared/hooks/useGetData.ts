@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 
-function useGetData<T>( url: string, queryKey: string ) {
+function useGetData<T>( url: string, queryKey: string, params?: string | number ) {
     const { data, error, isFetching, isError } = useQuery({
-        queryKey: [queryKey],
+        queryKey: [queryKey, params],
         queryFn: async () => {
             const response = await fetch(url);
             const data: T = await response.json();
