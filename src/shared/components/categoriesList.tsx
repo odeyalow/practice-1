@@ -1,10 +1,8 @@
 import { Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import API from '@/api';
-import useGetData from '../hooks/useGetData';
 import ICategory from '@/entities/ICategory';
-import { useMemo } from 'react';
+import useGetCategories from '../hooks/useGetCategories';
 
 interface CategoriesListProps {
     limit: number;
@@ -12,13 +10,7 @@ interface CategoriesListProps {
 }
 
 const CategoriesList:React.FC<CategoriesListProps> = ({ limit, enableVariantAll }) => {
-    const { data } = useGetData<ICategory[]>(API.PRODUCTS_CATEGORIES, 'categories', limit);
-    console.log(data);  
-
-    const dataToRender = useMemo(() => {
-        return limit > 0 ? data && data.slice(0, limit) : data;
-    }, [data, limit])
-
+    const categories = useGetCategories(limit);
     return (
         <Row className='justify-content-center mb-2'>
             {
@@ -30,7 +22,7 @@ const CategoriesList:React.FC<CategoriesListProps> = ({ limit, enableVariantAll 
                 </Col>
             }
             {   
-                dataToRender && dataToRender.map(({ slug, name }: ICategory): React.ReactNode => {
+                categories && categories.map(({ slug, name }: ICategory): React.ReactNode => {
                     return <Col key={slug} className="my-1 px-1" xs="auto">
                                 <Link to={`/categories/${slug}`}>
                                     <Button variant='outline-secondary' size='lg'>{name}</Button>
