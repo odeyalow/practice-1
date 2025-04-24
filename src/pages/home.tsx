@@ -18,7 +18,7 @@ const Home = () => {
                     <CarouselItem />
                 </Col>
             </Row>
-            <CategoriesList />
+            <CategoriesList limit={7} enableVariantAll/>
             <Row className='d-flex justify-content-center'>
                 <ProductsSection productsPlacement='grid'/>
             </Row>

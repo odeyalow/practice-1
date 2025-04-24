@@ -6,7 +6,7 @@ const Categories = () => {
         <ContentWrapper
         title='Categories'
         description='Looking for something specific?'>
-            <CategoriesList />
+            <CategoriesList limit={0}/>
         </ContentWrapper>
     );
 }
