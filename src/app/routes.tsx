@@ -14,7 +14,7 @@ const routes:IRoute[] = [
     { path: '/categories/:name', isNotPage: true, name: 'Single Categorie', element: <SingleCategegory /> },
     { path: '/cart', name: 'Cart', element: <Cart /> },
     { path: '/wishlist', name: 'Wishlist', element: <Wishlist /> },
-    { path: '/products/:name', isNotPage: true,  name: 'Single Product', element: <SingleProduct /> },
+    { path: '/products/:name/:id', isNotPage: true,  name: 'Single Product', element: <SingleProduct /> },
     { path: '*', isNotPage: true,  name: 'Page404', element: <Page404 /> },
 ];
 

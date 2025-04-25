@@ -1,40 +1,50 @@
 import { Card, Button, Row, Col, Alert } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
 
+import PlaceholderCarouselImg from '@/resources/placeholder-carousel.png';
 import ContentWrapper from "./contentWrapper";
 import CartIcon from '@/resources/icons/cart-icon';
 import WishlistIcon from '@/resources/icons/wishlist-icon';
+import useGetSingleProduct from '../hooks/useGetSingleProduct';
+import { IProductImg } from '@/entities/IProduct';
 
 const SingleProduct = () => {
+    const { id } = useParams<string>();
+    const data = useGetSingleProduct(Number(id));
+    const [mainImage, setMainImage] = useState<string>(data?.images[0].toString() || PlaceholderCarouselImg);
+
+    useEffect(() => {
+        window.scrollTo({ top: 0 })
+        if (data?.images?.length) {
+          setMainImage(data.images[0].toString());
+        }
+      }, [data]);
+
     return (
-        <ContentWrapper title="Product name">
+        data && 
+        <ContentWrapper title={data.title}>
             <Card className="my-3" border='secondary'>
                 <Row sm="auto" className="gap-0">
                     <Col sm={1} className='mt-2'>
-                        <Button active className='my-1' variant='outline-secondary'>
-                            <Card.Img
-                                src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png"
-                                alt="Example"
-                                style={{ width: '5rem' }}
-                                />
-                        </Button>
-                        <Button className='my-1' variant='outline-secondary'>
-                            <Card.Img
-                                src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png"
-                                alt="Example"
-                                style={{ width: '5rem' }}
-                                />
-                        </Button>
-                        <Button className='my-1' variant='outline-secondary'>
-                            <Card.Img
-                                src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png"
-                                alt="Example"
-                                style={{ width: '5rem' }}
-                                />
-                        </Button>
+                        {
+                            data && data?.images?.map((img: IProductImg) => {
+                                return  <Button onClick={() => setMainImage(img.toString())}
+                                        active={img.toString() === mainImage}
+                                        className='my-1'
+                                        variant='outline-secondary'>
+                                            <Card.Img
+                                                src={img.toString()}
+                                                alt="Example"
+                                                style={{ width: '5rem' }}
+                                                />
+                                        </Button>
+                            })
+                        }
                     </Col>
                     <Col sm={4} className='my-auto d-flex'>
                         <Card.Img
-                        src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png"
+                        src={mainImage}
                         alt="Example"
                         style={{ width: '20rem', margin: '0 auto' }}
                         />
@@ -42,17 +52,16 @@ const SingleProduct = () => {
                     <Col sm={7}>
                         <Card.Body className='h-100 d-flex flex-column'>
                             <Card.Text>
-                                <h6>Category: Beauty</h6>
-                                <h6>In stock: 37</h6>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde quibusdam, nulla quas tenetur laboriosam necessitatibus error temporibus distinctio aspernatur ratione.
+                                <h6 style={{ textTransform: 'capitalize' }}>Category: {data.category}</h6>
+                                <h6>In stock: {data.stock}</h6>
+                                {data.description}
                             </Card.Text>
                             <Alert variant='secondary' className='d-flex align-items-center justify-content-between'>
-                                <h5>Brand Name</h5>
-                                <h6>Product rating: 5</h6>
+                                <h5>{data.brand}</h5>
+                                <h6>Product rating: {data.rating}</h6>
                             </Alert>
                             <Col className='d-flex justify-content-end'>
-                            <h2>59</h2>
-                            <h6>.99$</h6>
+                            <h2>{data.price}$</h2>
                             </Col>
                             <Row className='mt-auto px-2'>
                                 <Col sm={5} className='p-1'>

@@ -12,7 +12,7 @@ interface ProductCardProps {
 const ProductCard:React.FC<ProductCardProps> = ({ product }) => {
     const formattedProductName = product.title.toLowerCase().replace(/\s+/g, '-');
     return (
-        <Card as={Link} to={`/products/${formattedProductName}`} className='my-3' style={{ width: '15rem', height: '90%', textDecoration: 'none' }}>
+        <Card as={Link} to={`/products/${formattedProductName}/${product.id}`} className='my-3' style={{ width: '15rem', height: '90%', textDecoration: 'none' }}>
             <Card.Img className='mx-auto mt-3' variant="top" style={{ width: '10rem' }} src={product.thumbnail} />
             <Card.Body className='d-flex justify-content-end' style={{ flexDirection: 'column' }}>
                 <Card.Title>{product.title}</Card.Title>

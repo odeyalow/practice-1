@@ -9,7 +9,6 @@ function useGetCategories(limit: number): ICategory[] | undefined {
         return limit > 0 ? data && data.slice(0, limit) : data;
     }, [data, limit])
 
-
     return categories;
 }
  

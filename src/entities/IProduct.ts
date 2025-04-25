@@ -18,6 +18,6 @@ export interface IProduct {
     thumbnail: string
 }
 
-interface IProductImg {
+export interface IProductImg {
     img: string;
 }

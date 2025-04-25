@@ -4,7 +4,17 @@ import useGetData from "./useGetData";
 import { IProductResponse } from '@/entities/IProduct';
 import API from "@/api";
 
-const useProductsPagination = (limit: number) => {
+type UseProductsPaginationReturn = {
+    pageNumber: number;
+    totalPagesArray: number[];
+    getPreviousPage: () => void;
+    getNextPage: () => void;
+    setPageNumber: (pageNumber: number) => void;
+    skipValue: number;
+    data: IProductResponse | undefined;
+}
+
+const useProductsPagination = (limit: number): UseProductsPaginationReturn => {
     const [pageNumber, setPageNumber] = useState<number>(1);
     const [skipValue, setSkipValue] = useState<number>(0);
     
