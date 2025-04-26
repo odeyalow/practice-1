@@ -3,22 +3,27 @@ import { Link } from 'react-router-dom';
 
 import CartIcon from '@/resources/icons/cart-icon';
 import WishlistIcon from '@/resources/icons/wishlist-icon';
+import useGetRandomProduct from '../hooks/useGetRandomProduct';
 
 interface RandomProductProps {
-    fullSize?: boolean
+    fullSize?: boolean,
 }
 
-const RandomProduct:React.FC<RandomProductProps> = ({ fullSize = false }) => {
+const RandomProduct:React.FC<RandomProductProps> = ({ fullSize }) => {
+    const data = useGetRandomProduct();
+    const formattedProductName = data ? data.title.toLowerCase().replace(/\s+/g, '-') : '';
+    const splittedPrice = data ? data.price.toString().split(".") : '';
+
     return (
-        <Card as={Link} to='/products/name' style={{ textDecoration: 'none', width: !fullSize ? '15rem' : '' }}>
-            <Card.Img variant="top" src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png"
-            style={{ objectFit: 'cover' }}/>
-            <Card.Body className="d-flex flex-column">
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content.
-                </Card.Text>
+        data && <Card as={Link} className={ !fullSize ? '' : 'w-100' } to={`/products/${formattedProductName}/${data.id}`} style={{ textDecoration: 'none', width: !fullSize ? '15rem' : '' }}>
+            <Card.Img variant="top" src={data.thumbnail}
+            style={{ objectFit: 'cover'}}/>
+            <Card.Body className='d-flex justify-content-end' style={{ flexDirection: 'column' }}>
+                <Card.Title>{data.title}</Card.Title>
+                <Container className='d-flex justify-content-end align-items-end pb-2'>
+                    <h4 className='text-end m-0'>{splittedPrice[0]}</h4>
+                    <h6 className='text-end m-0'>.{splittedPrice[1]}$</h6>
+                </Container>
                 <Container>
                     <Row className='d-flex justify-content-between'>
                         <Col sm={9} className='p-0'>

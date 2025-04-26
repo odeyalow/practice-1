@@ -1,4 +1,5 @@
 import Pagination from 'react-bootstrap/Pagination';
+import { useEffect } from 'react';
 
 interface PagePaginationProps {
     pageNumber: number;
@@ -14,7 +15,11 @@ const PagePagination:React.FC<PagePaginationProps> = ({
     getPreviousPage,
     getNextPage,
     setPageNumber}) => {
-    
+        useEffect(() => {
+            window.scrollTo({
+                top: 0
+            })
+        }, [pageNumber])
     return (
         totalPagesArray &&
         <Pagination className='justify-content-center mt-3 mb-5'>

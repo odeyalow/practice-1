@@ -11,11 +11,16 @@ interface ProductCardProps {
 
 const ProductCard:React.FC<ProductCardProps> = ({ product }) => {
     const formattedProductName = product.title.toLowerCase().replace(/\s+/g, '-');
+    const splittedPrice = product.price.toString().split(".");
     return (
         <Card as={Link} to={`/products/${formattedProductName}/${product.id}`} className='my-3' style={{ width: '15rem', height: '90%', textDecoration: 'none' }}>
             <Card.Img className='mx-auto mt-3' variant="top" style={{ width: '10rem' }} src={product.thumbnail} />
             <Card.Body className='d-flex justify-content-end' style={{ flexDirection: 'column' }}>
                 <Card.Title>{product.title}</Card.Title>
+                <Container className='d-flex justify-content-end align-items-end pb-2'>
+                    <h4 className='text-end m-0'>{splittedPrice[0]}</h4>
+                    <h6 className='text-end m-0'>.{splittedPrice[1]}$</h6>
+                </Container>
                 <Container>
                     <Row className='d-flex justify-content-between'>
                         <Col sm={9} className='p-0'>
