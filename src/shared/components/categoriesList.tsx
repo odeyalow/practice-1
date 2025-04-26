@@ -11,6 +11,7 @@ interface CategoriesListProps {
 
 const CategoriesList:React.FC<CategoriesListProps> = ({ limit, enableVariantAll }) => {
     const categories = useGetCategories(limit);
+
     return (
         <Row className='justify-content-center mb-2'>
             {
@@ -24,7 +25,7 @@ const CategoriesList:React.FC<CategoriesListProps> = ({ limit, enableVariantAll 
             {   
                 categories && categories.map(({ slug, name }: ICategory): React.ReactNode => {
                     return <Col key={slug} className="my-1 px-1" xs="auto">
-                                <Link to={`/categories/${slug}`}>
+                                <Link to={`/categories/${slug}`} state={{ title: name }}>
                                     <Button variant='outline-secondary' size='lg'>{name}</Button>
                                 </Link>
                             </Col>

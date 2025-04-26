@@ -19,8 +19,8 @@ const RandomProduct:React.FC<RandomProductProps> = ({ fullSize }) => {
             <Card.Img variant="top" src={data.thumbnail}
             style={{ objectFit: 'cover'}}/>
             <Card.Body className='d-flex justify-content-end' style={{ flexDirection: 'column' }}>
-                <Card.Title>{data.title}</Card.Title>
-                <Container className='d-flex justify-content-end align-items-end pb-2'>
+                <Card.Title style={{ fontSize: fullSize ? '2rem' : '' }}>{data.title}</Card.Title>
+                <Container className='d-flex justify-content-end align-items-end pb-2 px-0'>
                     <h4 className='text-end m-0'>{splittedPrice[0]}</h4>
                     <h6 className='text-end m-0'>.{splittedPrice[1]}$</h6>
                 </Container>
