@@ -6,7 +6,7 @@ import WishlistIcon from '@/resources/icons/wishlist-icon';
 import useGetRandomProduct from '../hooks/useGetRandomProduct';
 
 interface RandomProductProps {
-    fullSize?: boolean,
+    fullSize?: boolean;
 }
 
 const RandomProduct:React.FC<RandomProductProps> = ({ fullSize }) => {

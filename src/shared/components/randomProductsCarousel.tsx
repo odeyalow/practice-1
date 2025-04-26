@@ -9,10 +9,10 @@ const RandomProductsCarousel = () => {
             randomProductsCollection.push(
                 <Carousel.Item>
                     <Container key={i} className='d-flex gap-2 justify-content-center'>
-                        <RandomProduct />
-                        <RandomProduct />
-                        <RandomProduct />
-                        <RandomProduct />
+                        <RandomProduct addParam={false}/>
+                        <RandomProduct addParam={false}/>
+                        <RandomProduct addParam={false}/>
+                        <RandomProduct addParam={false}/>
                     </Container>
                 </Carousel.Item>
             );           
