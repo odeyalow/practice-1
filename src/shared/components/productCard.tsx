@@ -9,7 +9,8 @@ const ProductCard = ({ product }: { product: IProduct }) => {
     const formattedProductName = product.title.toLowerCase().replace(/\s+/g, '-');
     const splittedPrice = product.price.toString().split(".");
     return (
-        <Card as={Link} to={`/products/${formattedProductName}/${product.id}`} className='my-3' style={{ width: '15rem', height: '90%', textDecoration: 'none' }}>
+        <>
+            <Card as={Link} to={`/products/${formattedProductName}/${product.id}`} className='my-3' style={{ width: '15rem', height: '90%', textDecoration: 'none' }}>
             <Card.Img className='mx-auto mt-3' variant="top" style={{ width: '10rem' }} src={product.thumbnail} />
             <Card.Body className='d-flex justify-content-end' style={{ flexDirection: 'column' }}>
                 <Card.Title>{product.title}</Card.Title>
@@ -33,7 +34,8 @@ const ProductCard = ({ product }: { product: IProduct }) => {
                     </Row>
                 </Container>
             </Card.Body>
-        </Card>
+            </Card>
+        </>
     );
 }
  
