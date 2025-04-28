@@ -5,11 +5,7 @@ import CartIcon from '@/resources/icons/cart-icon';
 import WishlistIcon from '@/resources/icons/wishlist-icon';
 import useGetRandomProduct from '../hooks/useGetRandomProduct';
 
-interface RandomProductProps {
-    fullSize?: boolean;
-}
-
-const RandomProduct:React.FC<RandomProductProps> = ({ fullSize }) => {
+const RandomProduct = ({ fullSize }: { fullSize?: boolean }) => {
     const data = useGetRandomProduct();
     const formattedProductName = data ? data.title.toLowerCase().replace(/\s+/g, '-') : '';
     const splittedPrice = data ? data.price.toString().split(".") : '';

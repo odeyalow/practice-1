@@ -2,11 +2,7 @@ import PagePagination from "./pagePagination";
 import ProductsCollection from "./productsCollection";
 import useProductsPagination from "../hooks/useProductsPagination";
 
-interface ProductsSectionProps {
-    productsPlacement: string;
-}
-
-const ProductsSection:React.FC<ProductsSectionProps> = ({ productsPlacement }) => {
+const ProductsSection = ({ productsPlacement }: { productsPlacement: string }) => {
     const { getNextPage,
             getPreviousPage,
             setPageNumber,

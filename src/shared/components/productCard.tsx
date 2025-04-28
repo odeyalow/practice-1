@@ -5,11 +5,7 @@ import CartIcon from '@/resources/icons/cart-icon';
 import WishlistIcon from '@/resources/icons/wishlist-icon';
 import { IProduct } from '@/entities/IProduct';
 
-interface ProductCardProps {
-    product: IProduct;
-}
-
-const ProductCard:React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard = ({ product }: { product: IProduct }) => {
     const formattedProductName = product.title.toLowerCase().replace(/\s+/g, '-');
     const splittedPrice = product.price.toString().split(".");
     return (

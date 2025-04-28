@@ -6,7 +6,7 @@ import useGetData from "./useGetData";
 
 const useGetRandomProduct = (): IProduct | undefined => {
     const randomId: number = useMemo(() => {
-        return Math.floor(Math.random() * 194) + 1
+        return Math.floor(Math.random() * 194) + 1;
     }, []);
     const { data } = useGetData<IProduct>(API.SINGLE_PRODUCT(randomId), 'randomProduct', randomId);
     return data;

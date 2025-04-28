@@ -7,12 +7,12 @@ const RandomProductsCarousel = () => {
         const randomProductsCollection: React.ReactElement[] = [];
         for (let i = 0; i < amount; i++) {
             randomProductsCollection.push(
-                <Carousel.Item>
-                    <Container key={i} className='d-flex gap-2 justify-content-center'>
-                        <RandomProduct addParam={false}/>
-                        <RandomProduct addParam={false}/>
-                        <RandomProduct addParam={false}/>
-                        <RandomProduct addParam={false}/>
+                <Carousel.Item key={i}>
+                    <Container className='d-flex gap-2 justify-content-center'>
+                        <RandomProduct />
+                        <RandomProduct />
+                        <RandomProduct />
+                        <RandomProduct />
                     </Container>
                 </Carousel.Item>
             );           

@@ -1,4 +1,4 @@
-import { Card, Button, Row, Col, Alert } from 'react-bootstrap';
+import { Card, Button, Row, Col, Alert, Container } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 
@@ -28,8 +28,10 @@ const SingleProduct = () => {
                 <Row sm="auto" className="gap-0">
                     <Col sm={1} className='mt-2'>
                         {
-                            data && data?.images?.map((img: IProductImg) => {
-                                return  <Button onClick={() => setMainImage(img.toString())}
+                            data && data?.images?.map((img: IProductImg, index: number) => {
+                                return  <Button 
+                                        key={index}
+                                        onClick={() => setMainImage(img.toString())}
                                         active={img.toString() === mainImage}
                                         className='my-1'
                                         variant='outline-secondary'>
@@ -51,13 +53,13 @@ const SingleProduct = () => {
                     </Col>
                     <Col sm={7}>
                         <Card.Body className='h-100 d-flex flex-column'>
-                            <Card.Text>
+                            <Card.Text as={Container} className='px-0 mb-5'>
                                 <h6 style={{ textTransform: 'capitalize' }}>Category: {data.category}</h6>
                                 <h6>In stock: {data.stock}</h6>
                                 {data.description}
                             </Card.Text>
                             <Alert variant='secondary' className='d-flex align-items-center justify-content-between'>
-                                <h5>{data.brand}</h5>
+                                <h5>{data.brand ? data.brand : 'Manufacturer not specified'}</h5>
                                 <h6>Product rating: {data.rating}</h6>
                             </Alert>
                             <Col className='d-flex justify-content-end'>
