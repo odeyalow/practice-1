@@ -1,4 +1,4 @@
-import { Card, Row, Col, Button, Form } from 'react-bootstrap';
+import { Card, Row, Col, Button, Form, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import BinIcon from '@/resources/icons/bin-icon';
@@ -16,7 +16,10 @@ const ProductCartCard = () => {
                 </Col>
                 <Col>
                     <Card.Body>
-                        <Card.Title>Title</Card.Title>
+                        <Container className='d-flex justify-content-between px-0'>
+                            <Card.Title>Title</Card.Title>
+                            <h5>599.99$</h5>
+                        </Container>
                         <Card.Text>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde quibusdam, nulla quas tenetur laboriosam necessitatibus error temporibus distinctio aspernatur ratione.
                         </Card.Text>

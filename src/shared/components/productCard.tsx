@@ -4,10 +4,14 @@ import { Link } from 'react-router-dom';
 import CartIcon from '@/resources/icons/cart-icon';
 import WishlistIcon from '@/resources/icons/wishlist-icon';
 import { IProduct } from '@/entities/IProduct';
+import useWishlistActions from '@/features/wishlist/useWishlistActions';
 
 const ProductCard = ({ product }: { product: IProduct }) => {
+    const { toggleWishlist } = useWishlistActions();
+
     const formattedProductName = product.title.toLowerCase().replace(/\s+/g, '-');
     const splittedPrice = product.price.toString().split(".");
+
     return (
         <>
             <Card as={Link} to={`/products/${formattedProductName}/${product.id}`} className='my-3' style={{ width: '15rem', height: '90%', textDecoration: 'none' }}>
@@ -27,7 +31,10 @@ const ProductCard = ({ product }: { product: IProduct }) => {
                             </Button>
                         </Col>
                         <Col sm={2} className='p-0'>
-                            <Button className='w-100 px-0 h-100 d-flex justify-content-center align-items-center' variant="danger">
+                            <Button onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                                e.preventDefault();
+                                toggleWishlist(product);
+                            }} className='w-100 px-0 h-100 d-flex justify-content-center align-items-center' variant="danger">
                                 <WishlistIcon size={20}/>
                             </Button>
                         </Col>
