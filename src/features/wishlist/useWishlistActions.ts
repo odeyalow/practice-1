@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 import { RootState, AppDispatch } from "@/app/store";
 import { ADD, REMOVE } from './wishlistSlice';
-import { WishlistItem } from './IWishlist';
 import { IProduct } from '@/entities/IProduct';
 
 const useWishlistActions = () => {
@@ -11,13 +10,13 @@ const useWishlistActions = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     const toggleWishlist = (product: IProduct): void => {
-        const newItem: WishlistItem = {
+        const newItem: IProduct = {
             id: product.id,
             title: product.title,
             price: product.price,
             thumbnail: product.thumbnail,
         }
-        dispatch(wishlist.some(item => item.id === product.id) ? REMOVE(product.id) : ADD(newItem));
+        dispatch(wishlist.some((item: IProduct) => item.id === product.id) ? REMOVE(product.id) : ADD(newItem));
     }
 
     return { wishlist, toggleWishlist };

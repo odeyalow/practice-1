@@ -8,14 +8,14 @@ export interface IProductResponse {
 export interface IProduct {
     id: number;
     title: string;
-    description: string;
-    category: string;
+    description?: string;
+    category?: string;
     price: number;
-    rating: number;
-    stock: number;
-    brand: string;
-    images: IProductImg[];
-    thumbnail: string
+    rating?: number;
+    stock?: number;
+    brand?: string;
+    images?: IProductImg[];
+    thumbnail?: string
 }
 
 export interface IProductImg {

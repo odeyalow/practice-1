@@ -7,7 +7,7 @@ import { IProduct } from '@/entities/IProduct';
 import useWishlistActions from '@/features/wishlist/useWishlistActions';
 
 const ProductCard = ({ product }: { product: IProduct }) => {
-    const { toggleWishlist } = useWishlistActions();
+    const { toggleWishlist, wishlist } = useWishlistActions();
 
     const formattedProductName = product.title.toLowerCase().replace(/\s+/g, '-');
     const splittedPrice = product.price.toString().split(".");
@@ -35,7 +35,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
                                 e.preventDefault();
                                 toggleWishlist(product);
                             }} className='w-100 px-0 h-100 d-flex justify-content-center align-items-center' variant="danger">
-                                <WishlistIcon size={20}/>
+                                <WishlistIcon fill={wishlist.some((item: IProduct) => item.id === product.id)} size={20}/>
                             </Button>
                         </Col>
                     </Row>

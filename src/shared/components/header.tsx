@@ -4,8 +4,10 @@ import { Container, Nav, Navbar, Badge } from 'react-bootstrap';
 import Search from './search';
 import routes from '@/app/routes';
 import IRoute from '@/entities/IRoutes';
+import useWishlistActions from '@/features/wishlist/useWishlistActions';
 
 const Header = () => {
+    const { wishlist } = useWishlistActions();
     return (
         <Navbar data-bs-theme="light" expand="lg" className="bg-body-tertiary">
             <Container>
@@ -23,8 +25,14 @@ const Header = () => {
                                                 to={path}
                                                 key={path}>
                                                 {name}
-                                                {name === 'Cart' && <Badge bg="primary" className='h-100'>3</Badge>}
-                                                {name === 'Wishlist' && <Badge bg="danger" className='h-100'>3</Badge>}
+                                                {name === 'Cart' && 
+                                                <Badge bg="primary" className='h-100'>
+                                                    3
+                                                </Badge>}
+                                                {name === 'Wishlist' &&
+                                                <Badge bg="danger" className='h-100'>
+                                                    {wishlist.length > 0 && wishlist.length}
+                                                </Badge>}
                                             </Nav.Link>
                                     
                                 }

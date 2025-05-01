@@ -10,6 +10,7 @@ interface ProductsCollectionProps {
 }
 
 const ProductsCollection:React.FC<ProductsCollectionProps> = ({ placement, products }) => {
+    console.log(products)
     if ( placement === 'grid' ) {
         return (
             <Container>

@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom';
 import CartIcon from '@/resources/icons/cart-icon';
 import WishlistIcon from '@/resources/icons/wishlist-icon';
 import useGetRandomProduct from '../hooks/useGetRandomProduct';
+import { IProduct } from '@/entities/IProduct';
+import useWishlistActions from '@/features/wishlist/useWishlistActions';
 
 const RandomProduct = ({ fullSize }: { fullSize?: boolean }) => {
     const data = useGetRandomProduct();
     const formattedProductName = data ? data.title.toLowerCase().replace(/\s+/g, '-') : '';
     const splittedPrice = data ? data.price.toString().split(".") : '';
+    const { wishlist, toggleWishlist } = useWishlistActions();
 
     return (
         data && <Card as={Link} className={ !fullSize ? '' : 'w-100' } to={`/products/${formattedProductName}/${data.id}`} style={{ textDecoration: 'none', width: !fullSize ? '15rem' : '' }}>
@@ -29,8 +32,14 @@ const RandomProduct = ({ fullSize }: { fullSize?: boolean }) => {
                             </Button>
                         </Col>
                         <Col sm={2} className='p-0'>
-                            <Button className='w-100 px-0 h-100 d-flex justify-content-center align-items-center' variant="danger">
-                                <WishlistIcon fill={false} size={20}/>
+                            <Button
+                            className='w-100 px-0 h-100 d-flex justify-content-center align-items-center'
+                            variant="danger"
+                            onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                                e.preventDefault();
+                                toggleWishlist(data);
+                            }}>
+                                <WishlistIcon fill={wishlist.some((item: IProduct) => item.id === data.id)} size={20}/>
                             </Button>
                         </Col>
                     </Row>

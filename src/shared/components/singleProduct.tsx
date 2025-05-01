@@ -7,13 +7,15 @@ import ContentWrapper from "./contentWrapper";
 import CartIcon from '@/resources/icons/cart-icon';
 import WishlistIcon from '@/resources/icons/wishlist-icon';
 import useGetSingleProduct from '../hooks/useGetSingleProduct';
-import { IProductImg } from '@/entities/IProduct';
+import { IProduct, IProductImg } from '@/entities/IProduct';
+import useWishlistActions from '@/features/wishlist/useWishlistActions';
 
 const SingleProduct = () => {
     const { id } = useParams<string>();
     const data = useGetSingleProduct(Number(id));
-    const [mainImage, setMainImage] = useState<string>(data?.images[0].toString() || PlaceholderCarouselImg);
+    const [mainImage, setMainImage] = useState<string>(data?.images?.[0].toString() || PlaceholderCarouselImg);
     const [showImages, setShowImages] = useState<boolean>(false);
+    const { wishlist, toggleWishlist } = useWishlistActions();
     
     useEffect(() => {
         window.scrollTo({ top: 0 })
@@ -81,8 +83,11 @@ const SingleProduct = () => {
                                             </Button>
                                         </Col>
                                         <Col sm={2} className='p-1'>
-                                            <Button className='w-100 h-100 d-flex justify-content-center align-items-center gap-1' variant="danger">
-                                                <WishlistIcon size={20}/>
+                                            <Button
+                                            className='w-100 h-100 d-flex justify-content-center align-items-center gap-1'
+                                            variant="danger"
+                                            onClick={() => toggleWishlist(data)}>
+                                                <WishlistIcon fill={wishlist.some((item: IProduct) => item.id === data.id)} size={20}/>
                                             </Button>
                                         </Col>
                                     </Row>
@@ -108,7 +113,7 @@ const SingleProduct = () => {
                 <Modal.Body className='bg-dark text-light'>
                     <Carousel>
                         {
-                            data?.images.map((image: any, index: number) => {
+                            data?.images?.map((image: any, index: number) => {
                                 return  <Carousel.Item key={index}>
                                             <img className='d-block mx-auto' style={{ width: '30rem' }} src={image.toString()} alt="Product" />
                                         </Carousel.Item>
