@@ -10,7 +10,6 @@ interface ProductsCollectionProps {
 }
 
 const ProductsCollection:React.FC<ProductsCollectionProps> = ({ placement, products }) => {
-    console.log(products)
     if ( placement === 'grid' ) {
         return (
             <Container>
@@ -26,12 +25,11 @@ const ProductsCollection:React.FC<ProductsCollectionProps> = ({ placement, produ
     } else if ( placement === 'list' ) {
         return (
             <Stack>
-                <ProductCartCard />
-                <ProductCartCard />
-                <ProductCartCard />
-                <ProductCartCard />
-                <ProductCartCard />
-                <ProductCartCard />
+                {
+                    products && products.map((product: IProduct) => {
+                        return <ProductCartCard  key={product.id} product={product}/>
+                    })
+                }
             </Stack>
         );
     }

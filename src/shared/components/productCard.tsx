@@ -5,9 +5,11 @@ import CartIcon from '@/resources/icons/cart-icon';
 import WishlistIcon from '@/resources/icons/wishlist-icon';
 import { IProduct } from '@/entities/IProduct';
 import useWishlistActions from '@/features/wishlist/useWishlistActions';
+import useCartActions from '@/features/cart/useCartActions';
 
 const ProductCard = ({ product }: { product: IProduct }) => {
     const { toggleWishlist, wishlist } = useWishlistActions();
+    const { onAdd, cart } = useCartActions();
 
     const formattedProductName = product.title.toLowerCase().replace(/\s+/g, '-');
     const splittedPrice = product.price.toString().split(".");
@@ -25,16 +27,26 @@ const ProductCard = ({ product }: { product: IProduct }) => {
                 <Container>
                     <Row className='d-flex justify-content-between'>
                         <Col sm={9} className='p-0'>
-                            <Button className='w-100 h-100 d-flex justify-content-center align-items-center gap-1' variant="dark">
+                            <Button
+                            disabled={cart.some((item: IProduct) => item.id === product.id)}
+                            onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                                e.preventDefault();
+                                onAdd(product);
+                            }}
+                            className='w-100 h-100 d-flex justify-content-center align-items-center gap-1'
+                            variant="dark">
                                 Add to cart
                                 <CartIcon size={20}/>
                             </Button>
                         </Col>
                         <Col sm={2} className='p-0'>
-                            <Button onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                            <Button
+                            onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                                 e.preventDefault();
                                 toggleWishlist(product);
-                            }} className='w-100 px-0 h-100 d-flex justify-content-center align-items-center' variant="danger">
+                            }}
+                            className='w-100 px-0 h-100 d-flex justify-content-center align-items-center'
+                            variant="danger">
                                 <WishlistIcon fill={wishlist.some((item: IProduct) => item.id === product.id)} size={20}/>
                             </Button>
                         </Col>

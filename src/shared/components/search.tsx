@@ -28,7 +28,7 @@ const Search = () => {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchField(e.target.value)}
               onFocus={() => searchField.length > 0 && setShowResults(true)}
               onBlur={() => {
-                setTimeout(() => setShowResults(false), 100);
+                setTimeout(() => setShowResults(false), 250);
               }}
             />
             { showResults && <SearchResults searchQuery={searchField}/>}

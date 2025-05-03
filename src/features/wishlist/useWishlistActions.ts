@@ -16,7 +16,7 @@ const useWishlistActions = () => {
             price: product.price,
             thumbnail: product.thumbnail,
         }
-        dispatch(wishlist.some((item: IProduct) => item.id === product.id) ? REMOVE(product.id) : ADD(newItem));
+        dispatch(wishlist?.some((item: IProduct) => item.id === product.id) ? REMOVE(product.id) : ADD(newItem));
     }
 
     return { wishlist, toggleWishlist };

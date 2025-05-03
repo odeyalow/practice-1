@@ -9,6 +9,7 @@ import WishlistIcon from '@/resources/icons/wishlist-icon';
 import useGetSingleProduct from '../hooks/useGetSingleProduct';
 import { IProduct, IProductImg } from '@/entities/IProduct';
 import useWishlistActions from '@/features/wishlist/useWishlistActions';
+import useCartActions from '@/features/cart/useCartActions';
 
 const SingleProduct = () => {
     const { id } = useParams<string>();
@@ -16,7 +17,8 @@ const SingleProduct = () => {
     const [mainImage, setMainImage] = useState<string>(data?.images?.[0].toString() || PlaceholderCarouselImg);
     const [showImages, setShowImages] = useState<boolean>(false);
     const { wishlist, toggleWishlist } = useWishlistActions();
-    
+    const { cart, onAdd } = useCartActions();
+
     useEffect(() => {
         window.scrollTo({ top: 0 })
         if (data?.images?.length) {
@@ -77,7 +79,11 @@ const SingleProduct = () => {
                                             <Button className='w-100 h-100 d-flex justify-content-center align-items-center gap-1' variant="success">Buy now</Button>
                                         </Col>
                                         <Col sm={5} className='p-1'>
-                                            <Button className='w-100 h-100 d-flex justify-content-center align-items-center gap-1' variant="dark">
+                                        <Button
+                                        disabled={cart.some((item: IProduct) => item.id === data.id)}
+                                        onClick={() => onAdd(data)}
+                                        className='w-100 h-100 d-flex justify-content-center align-items-center gap-1'
+                                        variant="dark">
                                                 Add to cart
                                                 <CartIcon size={20}/>
                                             </Button>

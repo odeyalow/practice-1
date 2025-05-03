@@ -15,7 +15,8 @@ export interface IProduct {
     stock?: number;
     brand?: string;
     images?: IProductImg[];
-    thumbnail?: string
+    thumbnail?: string;
+    isInCheckout?: boolean;
 }
 
 export interface IProductImg {

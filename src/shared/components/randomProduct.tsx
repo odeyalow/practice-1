@@ -6,12 +6,14 @@ import WishlistIcon from '@/resources/icons/wishlist-icon';
 import useGetRandomProduct from '../hooks/useGetRandomProduct';
 import { IProduct } from '@/entities/IProduct';
 import useWishlistActions from '@/features/wishlist/useWishlistActions';
+import useCartActions from '@/features/cart/useCartActions';
 
 const RandomProduct = ({ fullSize }: { fullSize?: boolean }) => {
     const data = useGetRandomProduct();
     const formattedProductName = data ? data.title.toLowerCase().replace(/\s+/g, '-') : '';
     const splittedPrice = data ? data.price.toString().split(".") : '';
     const { wishlist, toggleWishlist } = useWishlistActions();
+    const { cart, onAdd } = useCartActions();
 
     return (
         data && <Card as={Link} className={ !fullSize ? '' : 'w-100' } to={`/products/${formattedProductName}/${data.id}`} style={{ textDecoration: 'none', width: !fullSize ? '15rem' : '' }}>
@@ -26,7 +28,14 @@ const RandomProduct = ({ fullSize }: { fullSize?: boolean }) => {
                 <Container>
                     <Row className='d-flex justify-content-between'>
                         <Col sm={9} className='p-0'>
-                            <Button className='w-100 h-100 d-flex justify-content-center align-items-center gap-1' variant="dark">
+                            <Button
+                            disabled={cart.some((item: IProduct) => item.id === data.id)}
+                            onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                                e.preventDefault();
+                                onAdd(data);
+                            }}
+                            className='w-100 h-100 d-flex justify-content-center align-items-center gap-1'
+                            variant="dark">
                                 Add to cart
                                 <CartIcon fill={false} size={20}/>
                             </Button>

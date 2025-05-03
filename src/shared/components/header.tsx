@@ -5,13 +5,15 @@ import Search from './search';
 import routes from '@/app/routes';
 import IRoute from '@/entities/IRoutes';
 import useWishlistActions from '@/features/wishlist/useWishlistActions';
+import useCartActions from '@/features/cart/useCartActions';
 
 const Header = () => {
     const { wishlist } = useWishlistActions();
+    const { cart } = useCartActions();
     return (
         <Navbar data-bs-theme="light" expand="lg" className="bg-body-tertiary">
             <Container>
-                <Navbar.Brand as={Link} to="/">TECHNO.com</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">AnyMarket.com</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Search />
@@ -27,7 +29,7 @@ const Header = () => {
                                                 {name}
                                                 {name === 'Cart' && 
                                                 <Badge bg="primary" className='h-100'>
-                                                    3
+                                                    {cart.length > 0 && cart.length}
                                                 </Badge>}
                                                 {name === 'Wishlist' &&
                                                 <Badge bg="danger" className='h-100'>

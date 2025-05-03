@@ -1,8 +1,11 @@
+import { IProduct } from '@/entities/IProduct';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { IWishlist, WishlistItem } from './IWishlist';
+interface WishlistState {
+    wishlist: IProduct[];
+}
 
-const initialState: IWishlist= {
+const initialState: WishlistState = {
     wishlist: []
 }
 
@@ -10,11 +13,11 @@ const wishlistSlice = createSlice({
     name: 'wishlist',
     initialState,
     reducers: {
-        'ADD': (state, action: PayloadAction<WishlistItem>) => {
+        ADD: (state, action: PayloadAction<IProduct>) => {
             state.wishlist.push(action.payload);
         },
-        'REMOVE': (state, action: PayloadAction<number>) => {
-            state.wishlist = state.wishlist.filter((product: WishlistItem) => action.payload !== product.id);
+        REMOVE: (state, action: PayloadAction<number>) => {
+            state.wishlist = state.wishlist.filter((product: IProduct) => action.payload !== product.id);
         },
     }
 })
