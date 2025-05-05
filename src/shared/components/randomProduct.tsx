@@ -7,6 +7,7 @@ import useGetRandomProduct from '../hooks/useGetRandomProduct';
 import { IProduct } from '@/entities/IProduct';
 import useWishlistActions from '@/features/wishlist/useWishlistActions';
 import useCartActions from '@/features/cart/useCartActions';
+import RandomCardPlaceholder from './placeholders/randomCardPlaceholder';
 
 const RandomProduct = ({ fullSize }: { fullSize?: boolean }) => {
     const data = useGetRandomProduct();
@@ -16,7 +17,7 @@ const RandomProduct = ({ fullSize }: { fullSize?: boolean }) => {
     const { cart, onAdd } = useCartActions();
 
     return (
-        data && <Card as={Link} className={ !fullSize ? '' : 'w-100' } to={`/products/${formattedProductName}/${data.id}`} style={{ textDecoration: 'none', width: !fullSize ? '15rem' : '' }}>
+        data ? <Card as={Link} className={ !fullSize ? '' : 'w-100' } to={`/products/${formattedProductName}/${data.id}`} style={{ textDecoration: 'none', width: !fullSize ? '15rem' : '' }}>
             <Card.Img variant="top" src={data.thumbnail}
             style={{ objectFit: 'cover'}}/>
             <Card.Body className='d-flex justify-content-end' style={{ flexDirection: 'column' }}>
@@ -54,7 +55,7 @@ const RandomProduct = ({ fullSize }: { fullSize?: boolean }) => {
                     </Row>
                 </Container>
             </Card.Body>
-        </Card>
+        </Card> : <RandomCardPlaceholder fullSize/>
     );
 }
  

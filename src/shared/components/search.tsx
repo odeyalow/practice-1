@@ -1,10 +1,15 @@
 import { Button, Form, Row, Col, Container } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom';
 
-import SearchResults from './searchResults';
+import SearchResults from '@/shared/components/searchResults';
+import { AppDispatch, RootState } from '@/app/store';;
+import { SetQuery } from '@/features/search/searchSlice';
 
 const Search = () => {
-  const [searchField, setSearchField] = useState<string>('');
+  const searchQuery = useSelector((state: RootState) => state.search.searchQuery);
+  const dispatch = useDispatch<AppDispatch>();
   const [showResults, setShowResults] = useState<boolean>(false);
 
   const handleSearch = (searchField: string): void => {
@@ -13,8 +18,8 @@ const Search = () => {
   }
 
   useEffect(() => {
-    handleSearch(searchField);
-  }, [searchField])
+    handleSearch(searchQuery);
+  }, [searchQuery])
 
   return (
       <Container>
@@ -22,19 +27,26 @@ const Search = () => {
         <Row>
           <Col style={{ position: 'relative' }}>
             <Form.Control
-              value={searchField}
+              value={searchQuery}
               type="text"
-              placeholder="Search"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchField(e.target.value)}
-              onFocus={() => searchField.length > 0 && setShowResults(true)}
+              placeholder="Find by specific request"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => dispatch(SetQuery(e.target.value))}
+              onFocus={() => searchQuery.length > 0 && setShowResults(true)}
               onBlur={() => {
                 setTimeout(() => setShowResults(false), 250);
               }}
             />
-            { showResults && <SearchResults searchQuery={searchField}/>}
+            { showResults && <SearchResults searchQuery={searchQuery}/>}
           </Col>
           <Col xs="auto">
-            <Button variant='outline-secondary' type="submit">Submit</Button>
+            <Link
+            to={`/products/search/${searchQuery}`}
+            onClick={(e: React.MouseEvent<HTMLAnchorElement>) => searchQuery.length === 0 && e.preventDefault()}>
+              <Button
+              variant='outline-secondary'
+              disabled={searchQuery.length === 0}
+              >Search</Button>
+            </Link>
           </Col>
         </Row>
       </Form>

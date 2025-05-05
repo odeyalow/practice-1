@@ -3,6 +3,7 @@ import { Container, Row, Col, Stack } from 'react-bootstrap';
 import ProductCard from './productCard';
 import ProductCartCard from './productCartCard';
 import { IProduct } from '@/entities/IProduct';
+import CardPlaceholderCollection from './placeholders/cardPlaceholderCollection';
 
 interface ProductsCollectionProps {
     products: IProduct[] | null;
@@ -15,9 +16,9 @@ const ProductsCollection:React.FC<ProductsCollectionProps> = ({ placement, produ
             <Container>
                 <Row md="auto" className='d-flex justify-content-center'>
                     {
-                        products && products.map((product: IProduct) => {
+                        products ? products.map((product: IProduct) => {
                             return <Col key={product.id}><ProductCard product={product}/></Col>
-                        })
+                        }) : <CardPlaceholderCollection />
                     }
                 </Row>
             </Container>

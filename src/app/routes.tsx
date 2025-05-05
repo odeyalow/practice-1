@@ -5,16 +5,18 @@ import Home from "@/pages/home";
 import Wishlist from "@/pages/wishlist";
 import SingleCategegory from "@/shared/components/singleCategory";
 import SingleProduct from "@/shared/components/singleProduct";
+import SearchResults from "@/shared/components/searchResultsPage";
 import Page404 from "@/pages/page404";
 
 
 const routes:IRoute[] = [
     { path: '/', index: true, name: 'Home', element: <Home /> },
     { path: '/categories', name: 'Categories', element: <Categories /> },
-    { path: '/categories/:name', isNotPage: true, name: 'Single Categorie', element: <SingleCategegory /> },
+    { path: '/categories/:name', isNotPage: true, name: 'Single Category', element: <SingleCategegory /> },
     { path: '/cart', name: 'Cart', element: <Cart /> },
     { path: '/wishlist', name: 'Wishlist', element: <Wishlist /> },
     { path: '/products/:name/:id', isNotPage: true,  name: 'Single Product', element: <SingleProduct /> },
+    { path: '/products/search/:query', isNotPage: true,  name: 'Search Results', element: <SearchResults /> },
     { path: '*', isNotPage: true,  name: 'Page404', element: <Page404 /> },
 ];
 

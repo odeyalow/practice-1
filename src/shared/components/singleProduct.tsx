@@ -2,7 +2,7 @@ import { Card, Button, Row, Col, Alert, Container, Carousel, Modal } from 'react
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 
-import PlaceholderCarouselImg from '@/resources/placeholder-carousel.png';
+import PlaceholderImage from '@/resources/placeholder-image.png'
 import ContentWrapper from "./contentWrapper";
 import CartIcon from '@/resources/icons/cart-icon';
 import WishlistIcon from '@/resources/icons/wishlist-icon';
@@ -10,11 +10,12 @@ import useGetSingleProduct from '../hooks/useGetSingleProduct';
 import { IProduct, IProductImg } from '@/entities/IProduct';
 import useWishlistActions from '@/features/wishlist/useWishlistActions';
 import useCartActions from '@/features/cart/useCartActions';
+import SingleProductPlaceholder from './placeholders/singleProductPlaceholder';
 
 const SingleProduct = () => {
     const { id } = useParams<string>();
     const data = useGetSingleProduct(Number(id));
-    const [mainImage, setMainImage] = useState<string>(data?.images?.[0].toString() || PlaceholderCarouselImg);
+    const [mainImage, setMainImage] = useState<string>(data?.images?.[0].toString() || PlaceholderImage);
     const [showImages, setShowImages] = useState<boolean>(false);
     const { wishlist, toggleWishlist } = useWishlistActions();
     const { cart, onAdd } = useCartActions();
@@ -29,7 +30,7 @@ const SingleProduct = () => {
     return (
         <>
             {
-                data && 
+                data ?
                 <ContentWrapper title={data.title}>
                     <Card className="my-3" border='secondary'>
                         <Row sm="auto" className="gap-0">
@@ -101,7 +102,7 @@ const SingleProduct = () => {
                             </Col>
                         </Row>
                     </Card>
-                </ContentWrapper>
+                </ContentWrapper> : <SingleProductPlaceholder />
             }
             <Modal
             centered={true}
