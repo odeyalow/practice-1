@@ -1,4 +1,4 @@
-import { Button, Form, Col, Container, Card, Row, Navbar } from 'react-bootstrap';
+import { Button, Form, Col, Container, Card, Row, Navbar, Alert } from 'react-bootstrap';
 
 import ContentWrapper from '@/shared/components/contentWrapper';
 import ProductsCollection from '@/shared/components/productsCollection';
@@ -39,7 +39,9 @@ const Cart = () => {
                                 Remove all ({cart.length})
                             </Button>
                         </Container>
-                        <ProductsCollection products={cart} placement='list'/>
+                        {
+                            cart.length ? <ProductsCollection products={cart} placement='list'/> : <Alert className='my-3'>Your cart is empty, add something!</Alert>
+                        }
                     </Col>
                     <Col lg={4} >
                         <Navbar sticky='top' className='pt-3'>
