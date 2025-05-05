@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import ICategory from '@/entities/ICategory';
 import useGetCategories from '../hooks/useGetCategories';
+import CategoriesListPlaceholder from './placeholders/categoriesListPlaceholder';
 
 interface CategoriesListProps {
     limit: number;
@@ -15,7 +16,7 @@ const CategoriesList:React.FC<CategoriesListProps> = ({ limit, enableVariantAll 
     return (
         <Row className='justify-content-center mb-2'>
             {
-                enableVariantAll &&
+                enableVariantAll && categories &&
                 <Col className="my-1 px-1" xs="auto">
                     <Link to="/categories/name">
                         <Button variant='secondary' size='lg' active>All</Button>
@@ -23,13 +24,13 @@ const CategoriesList:React.FC<CategoriesListProps> = ({ limit, enableVariantAll 
                 </Col>
             }
             {   
-                categories && categories.map(({ slug, name }: ICategory): React.ReactNode => {
+                categories ? categories.map(({ slug, name }: ICategory): React.ReactNode => {
                     return <Col key={slug} className="my-1 px-1" xs="auto">
                                 <Link to={`/categories/${slug}`} state={{ title: name }}>
                                     <Button variant='outline-secondary' size='lg'>{name}</Button>
                                 </Link>
                             </Col>
-                })
+                }) : <CategoriesListPlaceholder limit={limit === 0 ? 25 : limit} />
             }
         </Row>
     );
