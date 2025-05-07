@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 function useGetData<T>( url: string, queryKey: string, params?: string | number, alwaysRefetch?: boolean) {
-    const { data, error, isFetching, isError } = useQuery({
+    const { data } = useQuery({
         queryKey: [queryKey, params],
         queryFn: async (): Promise<T> => {
             const response = await fetch(url);
@@ -10,7 +10,7 @@ function useGetData<T>( url: string, queryKey: string, params?: string | number,
         },
         staleTime: alwaysRefetch ? 0 : 60000
     })
-    return { data, error, isFetching, isError };
+    return { data };
 }
 
 export default useGetData;
